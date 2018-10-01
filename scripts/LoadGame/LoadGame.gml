@@ -56,6 +56,50 @@ for(var i = 0; i < 20; i++)
 	}
 	level.tilemap = tilemap;
 	
+	// read name
+	var add = base_address+512;
+	var name = "";
+	for(var n=0; n<32; n++)
+	{
+		name = name + ansi_char((buffer_peek(game,add++,buffer_u8)));
+	}
+	level.name = name;
+	show_debug_message(name);
+	
+	// get items
+	var add = base_address+629;
+	items = 0;
+	// set items to invalid (-1)
+	for(var p=0; p<5; p++) items[p] = -1;
+	for(var b=0; b<5; b++)
+	{
+		var item = [];
+		var a = buffer_peek(game, add, buffer_u8);
+		if(a != 255)
+		{
+			item[0] = (a&7);	// colour
+			a = buffer_peek(game, add+1, buffer_u16);
+			item[1] = (a&31)*8;	// x
+			item[2] = ((a>>5)&$f)*8;	// y start
+			add += 5;
+			items[b] = item;
+		}
+		else
+		{
+			break;
+		}
+	}
+	level.items = items;
+	
+	// Get the item graphics
+	var add = base_address+692;
+	var it = [];
+	for(var g=0; g<8; g++)
+	{
+		it[g] = buffer_peek(game, add++, buffer_u8);
+	}
+	level.item_graphic = it;
+	global.item_graphic = -1;	// set to invalid surface, which forced the render
 }
 
 

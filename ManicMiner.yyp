@@ -55,6 +55,14 @@
             }
         },
         {
+            "Key": "2840b534-9f48-41cf-b7b1-fba4f11eecf1",
+            "Value": {
+                "id": "ec615f71-7a6c-46ce-a681-548b7124f582",
+                "resourcePath": "sprites\\sFont\\sFont.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "2a00b5e3-4628-4574-a2ae-e87e7a33e41a",
             "Value": {
                 "id": "8c829f11-561d-4f29-98bf-fc2648d892ee",
@@ -76,6 +84,14 @@
                 "id": "e95c5f99-ff23-40c7-ad73-3f16c09fdc89",
                 "resourcePath": "scripts\\CreateGraphics\\CreateGraphics.yy",
                 "resourceType": "GMScript"
+            }
+        },
+        {
+            "Key": "689cd82b-808d-4926-b920-622f0212db01",
+            "Value": {
+                "id": "2af2f6c6-f0e8-4e1a-8556-2eb8328d7659",
+                "resourcePath": "objects\\oItem\\oItem.yy",
+                "resourceType": "GMObject"
             }
         },
         {
@@ -268,6 +284,14 @@
                 "id": "d53ddc9e-4df6-444b-a1bf-44b153f006cb",
                 "resourcePath": "options\\mac\\options_mac.yy",
                 "resourceType": "GMMacOptions"
+            }
+        },
+        {
+            "Key": "ff345654-7de6-4b95-9f5a-50dcf670cbc3",
+            "Value": {
+                "id": "10e91bce-6dc0-4de5-9eb9-cd76a40ff2ba",
+                "resourcePath": "sprites\\sItem\\sItem.yy",
+                "resourceType": "GMSprite"
             }
         }
     ],

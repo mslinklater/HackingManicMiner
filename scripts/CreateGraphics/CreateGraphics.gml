@@ -46,3 +46,27 @@ if(!surface_exists(global.tile_surface))
 	surface_reset_target();
 }
 //draw_surface(global.tile_surface, 10, 10);
+
+// Init pickup surface
+if(!surface_exists(global.item_graphic))
+{
+	global.item_graphic = surface_create(8,8*20);
+    surface_set_target(global.item_graphic);
+    draw_clear_alpha(0,0);
+
+    for(var lev=0;lev<20;lev++)
+    {
+        var itg = levels[lev].item_graphic;
+        for(var yy=0;yy<8;yy++)
+        {
+            var row = itg[yy];
+            for(var xi=0;xi<=8;xi++)
+            {
+                if( ( (row>>xi)&1)!=0 ){
+                    draw_point_color(7-xi,yy+(lev*8),$ffffff);
+                }
+            }
+        }   
+    }   
+    surface_reset_target(); 
+}
