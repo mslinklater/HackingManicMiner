@@ -70,3 +70,35 @@ if(!surface_exists(global.item_graphic))
     }   
     surface_reset_target(); 
 }
+
+// guardians
+if(!surface_exists(global.guardian_graphics))
+{
+    global.guardian_graphics = surface_create(8*16,16*20);
+
+    surface_set_target(global.guardian_graphics);
+    draw_clear_alpha(0,0);
+
+    for(var lev=0;lev<20;lev++)
+    {
+        var blocks = levels[lev].Guardians;
+        // 8 frames
+        for(var i=0;i<8;i++)
+        {
+            draw_set_alpha(1);
+
+            var xx = (i*16);
+            for(var yy=0;yy<16;yy++)
+            {
+                var row = blocks[(i*16)+yy];
+                for(var xi=15;xi>=0;xi--)
+                {
+                    if( ( (row>>xi)&1)!=0 ){
+                        draw_point_color(xx+xi,yy+(lev*16),$ffffff);
+                    }
+                }
+            }
+        }
+    }
+    surface_reset_target();
+}

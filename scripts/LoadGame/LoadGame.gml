@@ -100,6 +100,83 @@ for(var i = 0; i < 20; i++)
 	}
 	level.item_graphic = it;
 	global.item_graphic = -1;	// set to invalid surface, which forced the render
+
+	// get horizontal guardians
+	var add = base_address+702; 
+	baddies = 0;
+	for(var bb=0;bb<4;bb++)baddies[bb]=-1;
+	for(var b=0;b<4;b++)
+	{       
+	    var baddie = [];
+	    var a = buffer_peek(game,add++,buffer_u8);
+	    if( a!=255)
+	    {
+	        baddie[0] = (a>>7);     // baddies speed 0=normal, 1= slow
+	        baddie[1] = (a&7);      // colour 
+	        a = buffer_peek(game,add,buffer_u16);
+	        baddie[2] = (a&31)*8;           // X start!
+	        baddie[3] = ((a>>5)&$f)*8;      // Y start!
+	        add+=3;
+	        a = buffer_peek(game,add++,buffer_u8);
+	        if((a&7)<4){
+	            baddie[4] = 1;
+	        }else{
+	            baddie[4] = -1;
+	        }
+	        a = buffer_peek(game,add++,buffer_u8);
+	        baddie[5] = (a&31)*8;           // extreme LEFT
+	        a = buffer_peek(game,add++,buffer_u8);
+	        baddie[6] = ((a&31)*8)+6;       // extreme RIGHT - we add 6 so that we turn around on the LAST frame of the animaton
+	        baddies[b] = baddie;
+	    }else{
+	        break;
+	    }
+	}
+	level.Hbaddies = baddies;
+	
+	// Extract guardian graphics
+	var Guardian = [];
+	var add = base_address+768;
+	for(var w=0;w<(8*16);w++){
+	    a = buffer_peek(game,add,buffer_u16);
+	    Guardian[w] = ((a>>8)&$ff)|((a&$ff)<<8);
+	    add+=2;
+	}
+	level.Guardians = Guardian;
+	global.guardian_graphics = -1;
+	
+	// get vertical guardians
+	var add = base_address+733; 
+	baddies = 0;
+	for(var bb=0;bb<4;bb++)baddies[bb]=-1;
+	if( i==8 || i==10 || i==12 || i=13 || i==14 || i=16 || i==17 || i==18 || i==19 )
+	{
+	    for(var b=0;b<4;b++)
+	    {       
+	        var baddie = [];
+	        var a = buffer_peek(game,add++,buffer_u8);
+	        if( a!=255)
+	        {
+	            baddie[0] = (a&7);          // colour 
+	            a = buffer_peek(game,add++,buffer_u8);
+	            baddie[1] = 0;              // graphic start
+	            a = buffer_peek(game,add++,buffer_u8);
+	            baddie[2] = a;              // Y start!
+	            a = buffer_peek(game,add++,buffer_u8);
+	            baddie[3] = (a&31)*8;       // X start!
+	            a = buffer_peek(game,add++,buffer_s8);
+	            baddie[4] = a;
+	            a = buffer_peek(game,add++,buffer_u8);
+	            baddie[5] = a;              // extreme TOP
+	            a = buffer_peek(game,add++,buffer_u8);
+	            baddie[6] = a;              // extreme BOTTOM
+	            baddies[b] = baddie;
+	        }else{
+	            break;
+	        }
+	    }
+	}
+	level.Vbaddies = baddies;
 }
 
 

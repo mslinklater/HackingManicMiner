@@ -47,6 +47,14 @@
             }
         },
         {
+            "Key": "13090a1d-5e18-4b4c-8b9d-494bf6176242",
+            "Value": {
+                "id": "92236adf-b457-45e9-94aa-b7eb1c88f4b9",
+                "resourcePath": "objects\\oHBaddie\\oHBaddie.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "19005550-4472-4485-b105-6875af4599bc",
             "Value": {
                 "id": "71b7214a-e1d1-40ab-b77c-d03d3c5099ef",
@@ -159,6 +167,14 @@
             }
         },
         {
+            "Key": "a0b37f20-87da-4637-88f8-e9a1d282b95a",
+            "Value": {
+                "id": "fa0e5674-ffe8-457b-9e5e-3a73f2591f2f",
+                "resourcePath": "sprites\\sHBaddie\\sHBaddie.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "a41b52db-7aec-4a3b-a94a-c35df649fb2a",
             "Value": {
                 "id": "56f60999-6477-48ec-b984-1cd95f82e7c7",
@@ -255,6 +271,14 @@
             }
         },
         {
+            "Key": "d5fb2a00-541d-4337-826e-25d7e23a3b65",
+            "Value": {
+                "id": "5b718cff-6f50-4799-92f4-9bf6fe33404a",
+                "resourcePath": "objects\\oVBaddie\\oVBaddie.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "dda462b3-fe4f-4487-aed0-8b46fd2d4857",
             "Value": {
                 "id": "7eaa2d61-afd8-4d0b-ba39-74e51a297fdb",
@@ -276,6 +300,14 @@
                 "id": "8de7a49c-492f-4d9b-b1d5-bdeee6dfb8df",
                 "resourcePath": "views\\ef178b6a-a8e9-4c27-a634-24e26fce4c67.yy",
                 "resourceType": "GMFolder"
+            }
+        },
+        {
+            "Key": "f2ac3da5-276e-49d6-b7da-aced75d9ff74",
+            "Value": {
+                "id": "367c1d9f-9d15-412c-852c-5d6ef46403e0",
+                "resourcePath": "sprites\\sVBaddie\\sVBaddie.yy",
+                "resourceType": "GMSprite"
             }
         },
         {
