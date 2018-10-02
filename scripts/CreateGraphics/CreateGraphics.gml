@@ -102,3 +102,58 @@ if(!surface_exists(global.guardian_graphics))
     }
     surface_reset_target();
 }
+
+// Init Willy !
+if(!surface_exists(global.willy_graphic))
+{
+	global.willy_graphic = surface_create(16,16*8);
+    surface_set_target(global.willy_graphic);
+    draw_clear_alpha(0,0);
+
+    // 8 sprites to convert
+    for(var spr=0;spr<8;spr++)
+    {
+        for(var yy=0;yy<16;yy++)
+        {
+            var row = Willy[yy+(16*spr)];
+            for(var xi=0;xi<=16;xi++)
+            {
+                if( ( (row>>xi)&1)!=0 ){
+                    draw_point_color(15-xi,yy+(16*spr),$ffffff);
+                }
+            }
+        }   
+    }   
+    surface_reset_target();
+}
+
+// Portal graphics
+if(!surface_exists(global.Portal_Graphic))
+{
+    global.Portal_Graphic = surface_create(16,16*20);
+    surface_set_target(global.Portal_Graphic);
+    draw_clear_alpha(0,0);
+
+    for(var lev=0;lev<20;lev++)
+    {
+        draw_set_alpha(1);
+        att = levels[lev].portal_attrib;
+        var paper = GetColour((att>>3)&$7);
+        var ink   = GetColour(att&$7);
+
+        var block = levels[lev].Portal_Graphic;
+        for(var yy=0;yy<16;yy++)
+        {
+            var row = block[yy];
+            for(var xi=15;xi>=0;xi--)
+            {
+                if( ( (row>>xi)&1)!=0 ){
+                    draw_point_color(xi,yy+(lev*16),ink);
+                }else{
+                    draw_point_color(xi,yy+(lev*16),paper);
+                }
+            }
+        }
+    }
+    surface_reset_target(); 
+}

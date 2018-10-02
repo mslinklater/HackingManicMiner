@@ -39,6 +39,7 @@ for(var b=0;b<4;b++)
     iBaddie.sprite = CurrentLevel;
 }
 
+// Vertical baddies
 with(oVBaddie) instance_destroy(id);
 var baddies = level.Vbaddies;
 for(var b=0;b<4;b++)
@@ -56,3 +57,12 @@ for(var b=0;b<4;b++)
     iBaddie.dir =0;
     iBaddie.sprite = CurrentLevel;
 }
+
+// Miner Willy
+with(oPlayer) instance_destroy();
+var willy = instance_create_depth(level.WillyX, level.WillyY, -50, oPlayer);
+willy.frame = 0;
+willy.dir = level.dir;
+
+with(oExit) instance_destroy(id);
+var iExit = instance_create_depth(level.portalx,level.portaly,-100,oExit);

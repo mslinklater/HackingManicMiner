@@ -177,6 +177,42 @@ for(var i = 0; i < 20; i++)
 	    }
 	}
 	level.Vbaddies = baddies;
+	
+	// Miner Willy's starting position
+	var add = base_address + 620;
+	var tmp = buffer_peek(game, add, buffer_u8)|(buffer_peek(game, add+1, buffer_u8)<<8);
+	level.WillyX = (tmp&31)*8;
+	level.WillyY = ((tmp>>5)&$f)*8;
+	level.dir = buffer_peek(game, add-2, buffer_u8);
+
+	// portal
+	var a = buffer_peek(game,base_address+688,buffer_u16);
+	level.portalx = (a&31)*8;
+	level.portaly = ((a>>5)&$f)*8;
+	level.portal_attrib = buffer_peek(game,base_address+655,buffer_u8);
+	// PortaL graphic
+	var Portal = [];
+	var add = base_address+656;
+	for(var w=0;w<(8*16);w++){
+	    a = buffer_peek(game,add,buffer_u16);
+	    Portal[w] = ((a>>8)&$ff)|((a&$ff)<<8);
+	    add+=2;
+	}
+	level.Portal_Graphic = Portal;
+	global.Portal_Graphic = -1;
+
 }
+
+// Miner Willy graphics
+
+Willy = [];
+var willy_offset = (33280-16384+SNA_HeaderSize);
+for(var w=0; w<(8*16); w++)
+{
+	a = buffer_peek(game, willy_offset, buffer_u16);
+	Willy[w] = ((a>>8)&$ff)|((a&$ff)<<8);
+	willy_offset += 2;
+}
+global.willy_graphic = -1;
 
 
